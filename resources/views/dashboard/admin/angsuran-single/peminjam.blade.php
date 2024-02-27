@@ -65,7 +65,7 @@
                                             <td>
                                                 <div class="d-flex align-items-center fw-medium">
                                                     <a class="btn btn-sm btn-primary mr-1" href="{{ route('angsuran-single.daftar-pinjaman', ['single' => $single->id]) }}">
-                                                        <i class="ri-group-2-fill"></i> <span >@lang('Riwayat Pinjaman')</span>
+                                                        <i class="ri-history-fill"></i> <span >@lang('Riwayat Pinjaman')</span>
                                                     </a>
                                                     <button class="btn btn-sm btn-info mx-1"  data-bs-toggle="modal" data-bs-target="#showInfoSingle{{$single->id}}">
                                                         <i class="ri-eye-line"></i> <span >@lang('Informasi Peminjam')</span>

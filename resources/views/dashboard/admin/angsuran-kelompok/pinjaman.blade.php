@@ -87,14 +87,14 @@
                                                         @csrf
                                                         <input type="hidden" name="id_peminjam" value="{{ $pinjaman->peminjam->id }}">
                                                         <input type="hidden" name="id_pinjaman" value="{{ $pinjaman->id }}">
-                                                        <button type="submit" class="btn btn-sm mr-1 {{ $pinjaman->keterangan == 0 ? 'disabled btn-danger' : 'btn-success'}}"><i class="ri-group-2-fill"></i> <span >@lang('Kuitansi Lunas')</span></button>
+                                                        <button type="submit" class="btn btn-sm mr-1 {{ $pinjaman->keterangan == 0 ? 'disabled btn-danger' : 'btn-success'}}"><i class="ri-file-download-line"></i> <span >@lang('Kuitansi Lunas')</span></button>
                                                     </form>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="d-flex align-items-center fw-medium">
                                                     <a class="btn btn-sm btn-primary mr-1" href="{{ route('riwayat-angsuran-kelompok.index', ['kelompok' => $pinjaman->id, 'pinjaman_kelompok' => $pinjaman->id]) }}">
-                                                        <i class="ri-group-2-fill"></i> <span >@lang('Riwayat Angsuran')</span>
+                                                        <i class="ri-history-fill"></i> <span >@lang('Riwayat Angsuran')</span>
                                                     </a>
                                                     <button class="btn btn-sm btn-info mx-1"  data-bs-toggle="modal" data-bs-target="#showInfoPinjaman{{$pinjaman->id}}">
                                                         <i class="ri-eye-line"></i> <span >@lang('Informasi Pinjaman')</span>

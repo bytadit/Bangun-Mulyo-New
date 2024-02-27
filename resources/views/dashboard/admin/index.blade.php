@@ -7,6 +7,8 @@
     <link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
     <link href="{{ URL::asset('assets/libs/quill/quill.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- flatpickr.js -->
+    <script type='text/javascript' src='{{ URL::asset('assets/libs/flatpickr/flatpickr.min.js') }}'></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection
@@ -125,7 +127,31 @@
                                         <div class="">
                                             <div class="card-header border-0 align-items-center d-flex">
                                                 <h4 class="card-title mb-0 flex-grow-1">Riwayat Pendapatan Jasa</h4>
-                                                <div>
+                                                <div class="row align-items-center">
+                                                    <div class="col">
+                                                        <button type="button" class="btn btn-soft-secondary shadow-none" data-timeframe="3m">
+                                                            3M
+                                                        </button>
+                                                        <button type="button" class="btn btn-soft-secondary shadow-none" data-timeframe="6m">
+                                                            6M
+                                                        </button>
+                                                        <button type="button" class="btn btn-soft-primary shadow-none" data-timeframe="1y">
+                                                            1Y
+                                                        </button>
+                                                    </div>
+                                                    <div class="col-sm-auto">
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control border-0 dash-filter-picker shadow" data-provider="flatpickr" data-range-date="true" data-date-format="d M, Y" data-deafult-date="01 Jan 2022 to 31 Jan 2022">
+                                                            <div class="input-group-text bg-primary border-primary text-white">
+                                                                <i class="ri-calendar-2-line"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                                {{-- <div>
                                                     <button type="button" class="btn btn-soft-secondary shadow-none btn-sm" data-timeframe="3m">
                                                         3M
                                                     </button>
@@ -135,7 +161,18 @@
                                                     <button type="button" class="btn btn-soft-primary shadow-none btn-sm" data-timeframe="1y">
                                                         1Y
                                                     </button>
-                                                </div>
+                                                    <div class="col-sm-auto">
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control border-0 dash-filter-picker shadow"
+                                                                data-provider="flatpickr" data-range-date="true"
+                                                                data-date-format="d M, Y"
+                                                                data-deafult-date="01 Jan 2022 to 31 Jan 2022">
+                                                            <div class="input-group-text bg-primary border-primary text-white">
+                                                                <i class="ri-calendar-2-line"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> --}}
                                             </div><!-- end card header -->
                                             <div class="row g-0 text-center">
                                                 <div class="col-6 col-sm-6">

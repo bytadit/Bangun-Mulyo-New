@@ -239,7 +239,7 @@
                                             <td>
                                                 <div class="d-flex align-items-center fw-medium">
                                                     <a class="btn btn-sm btn-primary mr-1" href="{{ route('pinjaman-single.show', ['single' => $single, 'pinjaman_single' => $pinjaman->id]) }}">
-                                                        <i class="ri-group-2-fill"></i> <span >@lang('Detail Pinjaman')</span>
+                                                        <i class="ri-information-line"></i> <span >@lang('Detail Pinjaman')</span>
                                                     </a>
                                                     <button class="btn btn-sm btn-warning mx-1"  data-bs-toggle="modal" data-bs-target="#editDataPinjamanSingle{{$pinjaman->id}}">
                                                         <i class="ri-pencil-line"></i> <span >@lang('Ubah')</span>

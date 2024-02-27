@@ -256,7 +256,7 @@
                                                         <input type="hidden" name="id_peminjam" value="{{ $angsuran->pinjaman->peminjam->id }}">
                                                         <input type="hidden" name="id_pinjaman" value="{{ $angsuran->pinjaman->id }}">
                                                         <input type="hidden" name="id_angsuran" value="{{ $angsuran->id }}">
-                                                        <button type="submit" class="btn btn-sm btn-primary mr-1"><i class="ri-group-2-fill"></i> <span >@lang('Cetak Kuitansi')</span></button>
+                                                        <button type="submit" class="btn btn-sm btn-primary mr-1"><i class="ri-printer-line"></i> <span >@lang('Cetak Kuitansi')</span></button>
                                                     </form>
                                                 </div>
                                             </td>

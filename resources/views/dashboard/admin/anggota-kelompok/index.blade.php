@@ -195,7 +195,7 @@
                                 <div class="flex-shrink-0">
                                     <div>
                                         <a href="{{ route('export-anggota', ['kelompok' => $kelompok]) }}" class="btn btn-success btn-sm shadow-none">
-                                            <i class="ri-menu-add-line label-icon align-middle fs-16 me-2"></i>
+                                            <i class="ri-file-upload-line label-icon align-middle fs-16 me-2"></i>
                                             Export Data
                                         </a>
                                         {{-- <button type="button" class="btn btn-warning btn-sm shadow-none" data-bs-toggle="modal" data-bs-target="#importDataAnggotaKelompok">
@@ -344,14 +344,14 @@
                                                         @csrf
                                                         <input type="hidden" name="id_peminjam" value="{{ $pinjaman->peminjam->id }}">
                                                         <input type="hidden" name="id_pinjaman" value="{{ $pinjaman->id }}">
-                                                        <button type="submit" class="btn btn-sm btn-info mr-1"><i class="ri-group-2-fill"></i> <span >@lang('Cetak Proposal')</span></button>
+                                                        <button type="submit" class="btn btn-sm btn-info mr-1"><i class="ri-printer-fill"></i> <span >@lang('Cetak Proposal')</span></button>
                                                     </form>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="d-flex align-items-center fw-medium">
                                                     <a class="btn btn-sm btn-primary mr-1" href="{{ route('pinjaman-kelompok.show', ['kelompok' => $kelompok, 'pinjaman_kelompok' => $pinjaman->id]) }}">
-                                                        <i class="ri-group-2-fill"></i> <span >@lang('Detail Pinjaman')</span>
+                                                        <i class="ri-information-line"></i> <span >@lang('Detail Pinjaman')</span>
                                                     </a>
                                                     <button class="btn btn-sm btn-warning mx-1"  data-bs-toggle="modal" data-bs-target="#editDataPinjaman{{$pinjaman->id}}">
                                                         <i class="ri-pencil-line"></i> <span >@lang('Ubah')</span>

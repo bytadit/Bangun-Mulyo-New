@@ -77,7 +77,7 @@
                                             <td>
                                                 <div class="d-flex align-items-center fw-medium">
                                                     <a class="btn btn-sm btn-primary mr-1" href="{{ route('detail-single.index', ['single' => $single->id]) }}">
-                                                        <i class="ri-group-2-fill"></i> <span >@lang('Detail Peminjam')</span>
+                                                        <i class="ri-information-line"></i> <span >@lang('Detail Peminjam')</span>
                                                     </a>
                                                     <button class="btn btn-sm btn-warning mx-1"  data-bs-toggle="modal" data-bs-target="#editDataPeminjamSingle{{$single->id}}">
                                                         <i class="ri-pencil-line"></i> <span >@lang('Ubah')</span>
