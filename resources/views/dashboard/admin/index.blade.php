@@ -10,6 +10,7 @@
     <!-- flatpickr.js -->
     <script type='text/javascript' src='{{ URL::asset('assets/libs/flatpickr/flatpickr.min.js') }}'></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://raw.githubusercontent.com/flatpickr/flatpickr/master/src/l10n/id.ts"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection
 
@@ -141,7 +142,7 @@
                                                     </div>
                                                     <div class="col-sm-auto">
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control border-0 dash-filter-picker shadow" data-provider="flatpickr" data-range-date="true" data-date-format="d M, Y" data-deafult-date="01 Jan 2022 to 31 Jan 2022">
+                                                            <input type="text" id="dateRangePicker" class="form-control border-0 dash-filter-picker shadow" data-provider="flatpickr" data-range-date="true" data-date-format="Y-m-d" data-deafult-date="01 Jan 2022 to 31 Jan 2022" style="width: 350px;"> <!-- Adjust the width as needed -->
                                                             <div class="input-group-text bg-primary border-primary text-white">
                                                                 <i class="ri-calendar-2-line"></i>
                                                             </div>
@@ -306,6 +307,36 @@
                 })
                 .catch(error => console.error('Error fetching data:', error));
         }
+        function fetchDataRange(startDate, endDate) {
+            // Make AJAX request to the backend to retrieve data
+            fetch(`/api/data/iuran-range?startDate=${startDate}&endDate=${endDate}`)
+                .then(response => response.json())
+                .then(data => {
+                    let dataArray = Object.values(data);
+                    // Filter out non-numeric keys
+                    let filteredDataArray = dataArray.filter(item => typeof item === 'object');
+                    let months = [];
+                    let totalValues = [];
+                    const monthNames = [
+                        'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                        'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+                    ];
+
+                    // Iterate through the response data
+                    filteredDataArray.forEach(row => {
+                        months.push(monthNames[row.month - 1]);
+                        totalValues.push(row.total_iuran);
+                    });
+
+                    // Update the chart data and categories
+                    options.xaxis.categories = months;
+                    options.series[0].data = totalValues;
+
+                    // Update the chart with the new data
+                    chart.updateOptions(options);
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
 
         // Initially fetch data for 3 months timeframe
         fetchData('1y');
@@ -353,6 +384,18 @@
                 // Fetch data based on the selected timeframe
                 fetchData(timeframe);
             });
+        });
+        flatpickr("#dateRangePicker", {
+            mode: "range",
+            // dateFormat: "Y-m-d",
+            dateFormat: "j F Y \\s\\/\\d j F Y",
+            locale: "id", // Indonesian locale
+            onClose: function(selectedDates, dateStr, instance) {
+                const startDate = selectedDates[0].toISOString().split('T')[0]; // Format start date
+                const endDate = selectedDates[selectedDates.length - 1].toISOString().split('T')[0]; // Format end date
+                console.log(startDate);
+                fetchDataRange(startDate, endDate);
+            }
         });
 
         // Render the chart

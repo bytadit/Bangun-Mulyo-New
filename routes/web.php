@@ -52,6 +52,7 @@ Route::post('/import-db', [DatabaseController::class, 'importDB'])->name('import
 
 // get data chart
 Route::get('/api/data/iuran', [ChartDataController::class, 'getIuranData'])->name('get-data-iuran)');
+Route::get('/api/data/iuran-range', [ChartDataController::class, 'getIuranDataRange'])->name('get-data-iuran-range)');
 
 // ekspor sheet
 Route::get('/anggota/export_excel/{kelompok}', [AnggotaKelompokController::class, 'exportAnggota'])->name('export-anggota');

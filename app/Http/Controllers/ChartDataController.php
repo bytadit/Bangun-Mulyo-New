@@ -64,4 +64,28 @@ class ChartDataController extends Controller
 
         return response()->json($dataArray);
     }
+    public function getIuranDataRange(Request $request)
+    {
+        $startDate = $request->query('startDate');
+        $endDate = $request->query('endDate');
+
+        // Default values if start date and end date are not provided
+        if (!$startDate || !$endDate) {
+            $endDate = Carbon::now();
+            $startDate = Carbon::now()->subMonths(3);
+        } else {
+            // Convert start and end date strings to Carbon instances
+            $startDate = Carbon::createFromFormat('Y-m-d', $startDate);
+            $endDate = Carbon::createFromFormat('Y-m-d', $endDate);
+        }
+
+        $data = Angsuran::selectRaw('MONTH(tgl_angsuran) as month, SUM(iuran) as total_iuran')
+                        ->whereBetween('tgl_angsuran', [$startDate, $endDate])
+                        ->groupByRaw('MONTH(tgl_angsuran)')
+                        ->get();
+
+        $dataArray = $data->toArray();
+
+        return response()->json($dataArray);
+    }
 }
