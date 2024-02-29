@@ -8,7 +8,7 @@
     },
     "build": {
         "appId": "com.example.my-laravel-app",
-        "productName": "Bangun Mulyo",
+        "productName": "Bangun Mulyo App",
         "directories": {
             "output": "dist"
         },
@@ -24,7 +24,8 @@
                         "ia32"
                     ]
                 }
-            ]
+            ],
+            "icon": "public/images/bm-old.png"
         },
         "linux": {
             "target": "AppImage"
