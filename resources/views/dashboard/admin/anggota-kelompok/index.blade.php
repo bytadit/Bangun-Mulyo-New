@@ -308,6 +308,7 @@
                                         <th>No.</th>
                                         <th>Periode</th>
                                         <th>Tanggal Pinjaman</th>
+                                        <th>Tanggal Pencairan</th>
                                         <th>Jatuh Tempo</th>
                                         <th>Jumlah Pinjaman</th>
                                         <th>Keperluan</th>
@@ -327,7 +328,10 @@
                                                 {{ \Carbon\Carbon::parse($pinjaman->tgl_pinjaman)->isoFormat('D MMMM Y') }}
                                             </td>
                                             <td>
-                                                {{ \Carbon\Carbon::parse($pinjaman->tgl_jatuh_tempo)->isoFormat('D MMMM Y') }}
+                                                {{ $pinjaman->tgl_pencairan == null ? 'Belum Diatur' : \Carbon\Carbon::parse($pinjaman->tgl_pencairan)->isoFormat('D MMMM Y') }}
+                                            </td>
+                                            <td>
+                                                {{ $pinjaman->tgl_jatuh_tempo == null ? 'Belum Diatur' : \Carbon\Carbon::parse($pinjaman->tgl_jatuh_tempo)->isoFormat('D MMMM Y') }}
                                             </td>
                                             <td>
                                                 @currency($pinjaman->jumlah_pinjaman)
@@ -339,12 +343,20 @@
                                                 <span class="badge border {{$pinjaman->keterangan == 1 ? 'border-success text-success' : 'border-danger text-danger'}}">{{$pinjaman->keterangan == 1 ? 'Lunas' : 'Belum Lunas'}}</span>
                                             </td>
                                             <td>
-                                                <div class="d-flex align-items-center fw-medium">
+                                                {{-- <div class="d-flex align-items-center fw-medium">
                                                     <form action="{{ route('cetak.proposal') }}" method="POST">
                                                         @csrf
                                                         <input type="hidden" name="id_peminjam" value="{{ $pinjaman->peminjam->id }}">
                                                         <input type="hidden" name="id_pinjaman" value="{{ $pinjaman->id }}">
                                                         <button type="submit" class="btn btn-sm btn-info mr-1"><i class="ri-printer-fill"></i> <span >@lang('Cetak Proposal')</span></button>
+                                                    </form>
+                                                </div> --}}
+                                                <div class="d-flex align-items-center fw-medium">
+                                                    <form action="{{ route('cetak.ba-pencairan') }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="id_peminjam" value="{{ $pinjaman->peminjam->id }}">
+                                                        <input type="hidden" name="id_pinjaman" value="{{ $pinjaman->id }}">
+                                                        <button type="submit" class="btn btn-sm btn-info mr-1 {{ $pinjaman->tgl_pencairan == null ? 'disabled' : '' }}"><i class="ri-printer-fill"></i> <span >@lang('Cetak BA Pencairan')</span></button>
                                                     </form>
                                                 </div>
                                             </td>

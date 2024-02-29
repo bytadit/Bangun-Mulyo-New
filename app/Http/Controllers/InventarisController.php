@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Inventaris;
 use Illuminate\Http\Request;
 use Alert;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\InventarisExport;
+use Carbon\Carbon;
 
 class InventarisController extends Controller
 {
@@ -98,5 +101,10 @@ class InventarisController extends Controller
         Inventaris::destroy($inventaris_id);
         Alert::success('Sukses!', 'Data inventaris berhasil dihapus!');
         return redirect()->route('inventaris.index');
+    }
+    public function exportInventaris(Request $request)
+    {
+        $date_now = Carbon::now();
+        return Excel::download(new InventarisExport, 'Data Inventaris-'. $date_now . '.xlsx');
     }
 }

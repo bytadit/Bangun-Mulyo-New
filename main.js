@@ -10,7 +10,7 @@ function createWindow() {
         }
     });
 
-    win.loadURL('http://bangun-mulyo.test'); // Replace with your Valet URL
+    win.loadURL('http://bangunmulyo.test'); // Replace with your Valet URL
 
     win.webContents.openDevTools(); // Open DevTools for debugging
 }

@@ -27,6 +27,10 @@
                                 <i class="ri-menu-add-line label-icon align-middle fs-16 me-2"></i>
                                 Tambah Data
                             </button>
+                            <a href="{{ route('export-inventaris') }}" class="btn btn-success btn-lg btn-label waves-effect waves-light mx-2">
+                                <i class="ri-file-upload-line label-icon align-middle fs-16 me-2"></i>
+                                Export Data
+                            </a>
                         </div>
                     </div>
                     <!--end col-->

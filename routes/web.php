@@ -56,12 +56,16 @@ Route::get('/api/data/iuran-range', [ChartDataController::class, 'getIuranDataRa
 
 // ekspor sheet
 Route::get('/anggota/export_excel/{kelompok}', [AnggotaKelompokController::class, 'exportAnggota'])->name('export-anggota');
+Route::get('/inventaris/export_excel', [InventarisController::class, 'exportInventaris'])->name('export-inventaris');
 
 // import sheet
 Route::post('/anggota/import_excel/{kelompok}', [AnggotaKelompokController::class, 'importAnggota'])->name('import-anggota');
 
 // cetak dokumen
 Route::post('/cetak-proposal', [CetakDokumen::class, 'proposalPinjaman'])->name('cetak.proposal');
+Route::post('/cetak-ba-pencairan', [CetakDokumen::class, 'beritaAcaraPencairan'])->name('cetak.ba-pencairan');
+Route::post('/cetak-surat-pinjaman', [CetakDokumen::class, 'suratPinjaman'])->name('cetak.surat-pinjaman');
+
 Route::post('/dokumen-pinjaman', [CetakDokumen::class, 'dokumenPinjaman'])->name('cetak.dokumen');
 Route::post('/cetak-kuitansi-angsuran-kelompok', [CetakDokumen::class, 'kuitansiAngsuranKelompok'])->name('cetak.kuitansi-angsuran-kelompok');
 Route::post('/cetak-kuitansi-angsuran-single', [CetakDokumen::class, 'kuitansiAngsuranSingle'])->name('cetak.kuitansi-angsuran-single');

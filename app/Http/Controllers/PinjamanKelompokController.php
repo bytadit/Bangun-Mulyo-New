@@ -37,15 +37,18 @@ class PinjamanKelompokController extends Controller
     {
         $peminjam_id = $request->peminjam_id;
         $periode = Pinjaman::where('peminjam_id', $peminjam_id)->count();
-        $data = Pinjaman::create([
-            'peminjam_id' => $peminjam_id,
-            'tgl_pinjaman' => $request->tgl_pinjaman,
-            'periode_pinjaman' => $periode + 1,
-            'jangka_waktu' => 12,
-            'tgl_jatuh_tempo' => Carbon::parse($request->tgl_pinjaman)->addMonths(12),
-            'keperluan' => $request->keperluan,
-            'keterangan' => $request->keterangan,
-        ]);
+        $data = new Pinjaman;
+        $data->peminjam_id = $peminjam_id;
+        $data->tgl_pinjaman = $request->tgl_pinjaman;
+        $data->tgl_pencairan = $request->tgl_pencairan;
+        $data->periode_pinjaman = $periode + 1;
+        $data->jangka_waktu = 12;
+        if($data->tgl_pencairan != null){
+            $data->tgl_jatuh_tempo = Carbon::parse($request->tgl_pencairan)->addMonths(12);
+        }
+        $data->keperluan = $request->keperluan;
+        $data->keterangan = 0;
+        $data->save();
         Alert::success('Sukses!', 'Data Pinjaman Kelompok berhasil diatur!');
         return redirect()->route('detail-kelompok.index', ['kelompok' => $peminjam_id]);
     }
@@ -88,13 +91,15 @@ class PinjamanKelompokController extends Controller
         $pinjaman_id = $request->pinjaman_id;
         $peminjam_id = $request->peminjam_id;
         $kelompok = $request->route('kelompok');
+
         Pinjaman::where('id', $pinjaman_id)
             ->update([
                 'peminjam_id' => $peminjam_id,
                 'tgl_pinjaman' => $request->etgl_pinjaman,
                 'periode_pinjaman' => $request->eperiode,
                 'jangka_waktu' => $request->ejangka_waktu,
-                'tgl_jatuh_tempo' => Carbon::parse($request->etgl_pinjaman)->addMonths($request->ejangka_waktu),
+                'tgl_pencairan' => $request->etgl_pencairan,
+                'tgl_jatuh_tempo' => Carbon::parse($request->etgl_pencairan)->addMonths($request->ejangka_waktu),
                 'keperluan' => $request->ekeperluan,
                 'keterangan' => $request->eketerangan,
             ]);

@@ -21,6 +21,12 @@
                         </div><!--end col-->
                         <div class="col-lg-12">
                             <div>
+                                <label for="etgl_pencairan" class="form-label">Tanggal Pencairan</label>
+                                <input type="date" value="{{\Carbon\Carbon::parse($pinjaman->tgl_pencairan)->format('Y-m-d')}}" class="form-control" name="etgl_pencairan" id="etgl_pencairan" placeholder="Masukkan tanggal pencairan...">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-lg-12">
+                            <div>
                                 <label for="ejangka_waktu" class="form-label">Jangka Waktu (Bulan)</label>
                                 <input type="number" min="1" value="{{ $pinjaman->jangka_waktu }}" class="form-control" name="ejangka_waktu" id="ejangka_waktu" placeholder="Masukkan jangka waktu pinjaman (bulan)...">
                             </div>

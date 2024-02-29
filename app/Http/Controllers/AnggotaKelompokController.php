@@ -141,6 +141,7 @@ class AnggotaKelompokController extends Controller
             Excel::import(new AnggotaImport($kelompok), public_path('/file_anggota/'.$nama_file));
             Alert::success('Sukses!', 'Data anggota kelompok berhasil ditambahkan!');
             return redirect()->route('detail-kelompok.index', ['kelompok' => $kelompok]);
+
         } catch (\Exception $e) {
             Alert::error('Gagal!', 'Data anggota kelompok gagal ditambahkan!');
             return redirect()->route('detail-kelompok.index', ['kelompok' => $kelompok]);

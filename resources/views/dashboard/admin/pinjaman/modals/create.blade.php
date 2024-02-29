@@ -17,6 +17,12 @@
                                 <input type="date" class="form-control" name="tgl_pinjaman" id="tgl_pinjaman" placeholder="Masukkan tanggal pinjaman...">
                             </div>
                         </div><!--end col-->
+                        <div class="col-lg-12">
+                            <div>
+                                <label for="tgl_pencairan" class="form-label">Tanggal Pencairan</label>
+                                <input type="date" class="form-control" name="tgl_pencairan" id="tgl_pencairan" placeholder="Masukkan tanggal pencairan...">
+                            </div>
+                        </div><!--end col-->
                         {{-- <div class="col-lg-12">
                             <div>
                                 <label for="jangka_waktu" class="form-label">Jangka Waktu (Bulan)</label>
@@ -28,7 +34,7 @@
                             <label for="keperluan" class="form-label">Keperluan<span style="color: red;">*</span></label>
                             <textarea rows="3" name="keperluan" class="form-control" id="keperluan"></textarea>
                         </div>
-                        <div class="col-lg-12 mb-3">
+                        {{-- <div class="col-lg-12 mb-3">
                             <label for="keterangan" class="form-label">Pilih Keterangan<span style="color: red;">*</span></label>
                             <select class="form-control" id="keterangan" name="keterangan">
                                 <option value="">Pilih Keterangan</option>
@@ -37,7 +43,7 @@
                                     <option value="1">Lunas</option>
                                 </optgroup>
                             </select>
-                        </div>
+                        </div> --}}
                         <div class="col-lg-12">
                             <div class="hstack gap-2 justify-content-end">
                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Batal</button>

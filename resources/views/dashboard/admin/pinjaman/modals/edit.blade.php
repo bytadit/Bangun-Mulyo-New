@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalEditPinjaman">Ubah Data Peminjam Kelompok</h5>
+                <h5 class="modal-title" id="modalEditPinjaman">Ubah Data Pinjaman Kelompok</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -17,6 +17,12 @@
                             <div>
                                 <label for="etgl_pinjaman" class="form-label">Tanggal Pinjaman</label>
                                 <input type="date" value="{{\Carbon\Carbon::parse($pinjaman->tgl_pinjaman)->format('Y-m-d')}}" class="form-control" name="etgl_pinjaman" id="etgl_pinjaman" placeholder="Masukkan tanggal pinjaman...">
+                            </div>
+                        </div><!--end col-->
+                        <div class="col-lg-12">
+                            <div>
+                                <label for="etgl_pencairan" class="form-label">Tanggal Pencairan</label>
+                                <input type="date" value="{{\Carbon\Carbon::parse($pinjaman->tgl_pencairan)->format('Y-m-d')}}" class="form-control" name="etgl_pencairan" id="etgl_pencairan" placeholder="Masukkan tanggal pencairan...">
                             </div>
                         </div><!--end col-->
                         <div class="col-lg-12">
