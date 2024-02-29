@@ -37,7 +37,7 @@ class CetakDokumen extends Controller
             $hr_cair = $tgl_cair->day;
             $terbilang_hr_cair = Terbilang::make($tgl_cair->day);
 
-            $hrname_cair = $tgl_cair->format('l');
+            $hrname_cair = $tgl_cair->isoFormat('dddd');
 
             $jml_pinjaman = number_format(Pinjaman::where('id', $id_pinjaman)->first()->jumlah_pinjaman, 2, ',', '.');
             $jml_pokok = number_format(Pinjaman::where('id', $id_pinjaman)->first()->jumlah_pokok, 2, ',', '.');

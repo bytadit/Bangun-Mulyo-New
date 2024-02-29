@@ -19,8 +19,8 @@ return new class extends Migration
             // $table->dateTime('tgl_lahir');
             $table->integer('umur');
             $table->string('pekerjaan');
-            $table->string('jaminan');
-            $table->integer('nilai_jaminan');
+            $table->string('jaminan')->nullable();
+            $table->integer('nilai_jaminan')->nullable();
             $table->timestamps();
         });
     }
